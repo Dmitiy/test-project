@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Input, Row, Col, Form } from "antd";
+import PropTypes from "prop-types";
 
 class Search extends Component {
   onChangeHandler = (e) => {
@@ -26,5 +27,9 @@ class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  onChange: PropTypes.func,
+};
 
 export default Search;
