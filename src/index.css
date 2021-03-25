@@ -11,3 +11,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+ul,
+ol {
+  list-style: none;
+}
+
+.app {
+  max-width: 1200px;
+  width: 100%;
+  margin: 24px auto 0;
+}
+.btn-addMore {
+  margin-top: 24px;
+}
