@@ -153,7 +153,7 @@ class App extends Component {
               <p>
                 Ключевые слова:
                 {dataModal.keywords &&
-                  dataModal.keywords.map((tag, idx) => (
+                  dataModal.keywords.map((tag) => (
                     <Tag color='green' key={tag + Date.now()}>
                       {tag}
                     </Tag>
