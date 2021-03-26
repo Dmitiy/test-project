@@ -48,15 +48,17 @@ class ModalDescription extends Component {
 }
 
 ModalDescription.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  createdDate: PropTypes.string,
-  cover: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  pack: PropTypes.shape({
+  dataModal: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
-  }),
+    createdDate: PropTypes.string,
+    cover: PropTypes.string,
+    keywords: PropTypes.arrayOf(PropTypes.string),
+    pack: PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default ModalDescription;

@@ -4,7 +4,6 @@ import Search from "./components/Search";
 import { illustrationColumns } from "./utils/illustrationColumns";
 import ModalDescription from "./components/ModalDescription";
 import { Button, Modal, Table } from "antd";
-import PropTypes from "prop-types";
 
 class App extends Component {
   state = {
@@ -127,36 +126,5 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  illustration: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    createdDate: PropTypes.string,
-    cover: PropTypes.string,
-    keywords: PropTypes.arrayOf(PropTypes.string),
-    pack: PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-    }),
-  }),
-
-  filterValue: PropTypes.string,
-  page: PropTypes.number,
-  hasMore: PropTypes.bool,
-  isDisplayModal: PropTypes.bool,
-
-  dataModal: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    createdDate: PropTypes.string,
-    cover: PropTypes.string,
-    keywords: PropTypes.arrayOf(PropTypes.string),
-    pack: PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-    }),
-  }),
-};
 
 export default App;
