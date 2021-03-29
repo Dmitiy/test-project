@@ -57,6 +57,7 @@ class ModalDescription extends Component {
 ModalDescription.propTypes = {
   dataModal: PropTypes.shape({
     id: PropTypes.number,
+    assignedExtensions: PropTypes.arrayOf(PropTypes.string),
     name: PropTypes.string,
     createdDate: PropTypes.string,
     cover: PropTypes.string,
