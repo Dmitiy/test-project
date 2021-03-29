@@ -10,19 +10,26 @@ class ModalDescription extends Component {
       cover,
       keywords,
       pack,
+      assignedExtensions,
     } = this.props.dataModal;
+
+    const [ext] = assignedExtensions;
+
     return (
       <>
         <ul className='description-modal-list'>
           <li>
+            <p>ID: {id || "отсутствует"} </p>
             <p>
               Раздел:
               {pack && <Tag color='blue'>{pack.name || "не найден"}</Tag>}
             </p>
-          </li>
-          <li>
-            <p>ID: {id || "отсутствует"} </p>
+            <p>
+              Раздел ID:
+              {pack && <Tag color='orange'>{pack.id || "не найден"}</Tag>}
+            </p>
             <p>Название: {name || "отсутствует"}</p>
+            <p>Расшириение: {ext || "отсутствует"}</p>
             <p>Дата создания: {createdDate || "отсутствует"}</p>
           </li>
           <li>
