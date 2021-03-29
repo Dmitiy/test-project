@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Row, Col, Form } from "antd";
+import { Input, Row, Col, Form, Button } from "antd";
 import PropTypes from "prop-types";
 
 class Search extends Component {
@@ -8,18 +8,31 @@ class Search extends Component {
     this.props.onChange(str);
   };
 
+  resetFilterData = () => {};
+
   render() {
     return (
       <>
         <Form>
           <Row gutter={[16, 16]}>
-            <Col span={24}>
+            <Col span={20}>
               <Input
                 placeholder='Введите слово для поиска ...'
                 onChange={this.onChangeHandler}
                 size='large'
                 style={{ marginBottom: 24 }}
+                value={this.props.value}
               />
+            </Col>
+            <Col span={4}>
+              <Button
+                type='primary'
+                className='btn-resetFilter'
+                onClick={this.resetFilterData}
+                size='large'
+              >
+                Сбросить фильтры
+              </Button>
             </Col>
           </Row>
         </Form>

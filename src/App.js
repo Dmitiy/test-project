@@ -1,9 +1,9 @@
+import { Button, Modal, Table } from "antd";
 import React, { Component } from "react";
 import { getDataFromApi } from "./api/getDataFromApi";
+import ModalDescription from "./components/ModalDescription";
 import Search from "./components/Search";
 import { illustrationColumns } from "./utils/illustrationColumns";
-import ModalDescription from "./components/ModalDescription";
-import { Button, Modal, Table } from "antd";
 
 class App extends Component {
   state = {
@@ -30,6 +30,12 @@ class App extends Component {
     });
   };
 
+  resetFilterData = () => {
+    this.setState({
+      filterValue: "",
+    });
+  };
+
   onSearchChange = (str) => {
     this.setState({
       filterValue: str,
@@ -47,13 +53,13 @@ class App extends Component {
   };
 
   showModal = (idx) => {
-    const data = this.state.illustration.find((el) =>
+    const dataIllustration = this.state.illustration.find((el) =>
       el.id === idx ? el : null
     );
 
     this.setState({
       isDisplayModal: true,
-      dataModal: data,
+      dataModal: dataIllustration,
     });
   };
 
@@ -73,19 +79,19 @@ class App extends Component {
     } = this.state;
 
     const tableData = illustration
-      .map(({ id, name, createdDate }, index) => ({
+      .map(({ id, name, pack }, index) => ({
         iterationId: index + 1,
         key: `${id}_${index}`,
         id,
         name,
-        createdDate,
+        packName: pack.name,
       }))
       .filter(
-        ({ id, name, createdDate }) =>
-          !filterValue ||
+        ({ id, name, packName }) =>
+          !filterValue.toLowerCase() ||
           id.toString().indexOf(filterValue) !== -1 ||
-          name.indexOf(filterValue) !== -1 ||
-          createdDate.indexOf(filterValue) !== -1
+          name.toLowerCase().indexOf(filterValue) !== -1 ||
+          packName.toLowerCase().indexOf(filterValue) !== -1
       );
 
     return (
@@ -103,7 +109,7 @@ class App extends Component {
             };
           }}
         />
-        {hasMore && (
+        {hasMore && tableData.length > 0 && (
           <Button
             type='primary'
             className='btn-addMore'

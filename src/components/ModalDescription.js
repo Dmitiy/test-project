@@ -13,7 +13,8 @@ class ModalDescription extends Component {
       assignedExtensions,
     } = this.props.dataModal;
 
-    const [ext] = assignedExtensions;
+    const [extPNG] = assignedExtensions;
+    const { id: packId, name: packName } = pack;
 
     return (
       <>
@@ -22,14 +23,14 @@ class ModalDescription extends Component {
             <p>ID: {id || "отсутствует"} </p>
             <p>
               Раздел:
-              {pack && <Tag color='blue'>{pack.name || "не найден"}</Tag>}
+              {pack && <Tag color='blue'>{packName || "не найден"}</Tag>}
             </p>
             <p>
               Раздел ID:
-              {pack && <Tag color='orange'>{pack.id || "не найден"}</Tag>}
+              {pack && <Tag color='orange'>{packId || "не найден"}</Tag>}
             </p>
             <p>Название: {name || "отсутствует"}</p>
-            <p>Расшириение: {ext || "отсутствует"}</p>
+            <p>Расшириение: {extPNG || "отсутствует"}</p>
             <p>Дата создания: {createdDate || "отсутствует"}</p>
           </li>
           <li>

@@ -15,8 +15,8 @@ export const illustrationColumns = [
     key: "name",
   },
   {
-    title: "Created date",
-    dataIndex: "createdDate",
-    key: "createdDate",
+    title: "Pack Name",
+    dataIndex: "packName",
+    key: "packName",
   },
 ];
