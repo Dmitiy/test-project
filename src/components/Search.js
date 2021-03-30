@@ -3,6 +3,8 @@ import { Input, Row, Col, Form, Button } from "antd";
 import PropTypes from "prop-types";
 
 class Search extends Component {
+  searchInputRef = React.createRef();
+
   onChangeHandler = (e) => {
     const str = e.target.value.trim();
     this.props.onChange(str);
@@ -12,6 +14,10 @@ class Search extends Component {
     this.props.resetFilter();
   };
 
+  componentDidMount() {
+    this.searchInputRef.current.focus();
+  }
+
   render() {
     return (
       <>
@@ -19,11 +25,13 @@ class Search extends Component {
           <Row gutter={[16, 16]}>
             <Col span={20}>
               <Input
+                ref={this.searchInputRef}
                 placeholder='Введите слово для поиска ...'
                 onChange={this.onChangeHandler}
                 size='large'
                 style={{ marginBottom: 24 }}
                 value={this.props.value}
+                tabIndex='1'
               />
             </Col>
             <Col span={4}>
