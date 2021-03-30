@@ -5,7 +5,7 @@ export const getDataFromApi = async (page = 1) => {
 
   const config = {
     params: {
-      count: 10,
+      count: 100,
       page,
     },
   };

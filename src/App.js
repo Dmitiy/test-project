@@ -96,7 +96,12 @@ class App extends Component {
 
     return (
       <div className='app'>
-        <Search data={illustration} onChange={this.onSearchChange}></Search>
+        <Search
+          resetFilter={this.resetFilterData}
+          data={illustration}
+          value={this.state.filterValue}
+          onChange={this.onSearchChange}
+        ></Search>
         <Table
           dataSource={tableData}
           columns={illustrationColumns}

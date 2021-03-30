@@ -8,7 +8,9 @@ class Search extends Component {
     this.props.onChange(str);
   };
 
-  resetFilterData = () => {};
+  resetFilterData = () => {
+    this.props.resetFilter();
+  };
 
   render() {
     return (
@@ -30,8 +32,9 @@ class Search extends Component {
                 className='btn-resetFilter'
                 onClick={this.resetFilterData}
                 size='large'
+                htmlType='reset'
               >
-                Сбросить фильтры
+                Очистить поиск
               </Button>
             </Col>
           </Row>
@@ -43,6 +46,7 @@ class Search extends Component {
 
 Search.propTypes = {
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default Search;
