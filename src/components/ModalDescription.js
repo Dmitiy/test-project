@@ -30,7 +30,7 @@ class ModalDescription extends Component {
               {pack && <Tag color='orange'>{packId || "не найден"}</Tag>}
             </p>
             <p>Название: {name || "отсутствует"}</p>
-            <p>Расшириение: {extPNG || "отсутствует"}</p>
+            <p>Расширение: {extPNG || "отсутствует"}</p>
             <p>Дата создания: {createdDate || "отсутствует"}</p>
           </li>
           <li>
