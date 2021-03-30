@@ -97,11 +97,10 @@ class App extends Component {
     return (
       <div className='app'>
         <Search
-          resetFilter={this.resetFilterData}
           data={illustration}
           value={this.state.filterValue}
           onChange={this.onSearchChange}
-        ></Search>
+        />
         <Table
           dataSource={tableData}
           columns={illustrationColumns}
@@ -114,7 +113,7 @@ class App extends Component {
             };
           }}
         />
-        {hasMore && tableData.length > 0 && (
+        {hasMore && !filterValue.length && (
           <Button
             type='primary'
             className='btn-addMore'

@@ -11,7 +11,7 @@ class Search extends Component {
   };
 
   resetFilterData = () => {
-    this.props.resetFilter();
+    this.props.onChange("");
   };
 
   componentDidMount() {
