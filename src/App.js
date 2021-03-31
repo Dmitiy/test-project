@@ -89,7 +89,7 @@ class App extends Component {
     const matchesWords = filterValue
       .split(",")
       .filter((el) => !!el)
-      .map((el) => el.toLowerCase());
+      .map((el) => el.toLowerCase().trim());
 
     const tableData = sourceData.filter(({ id, name, packName }) => {
       if (!matchesWords.length) {
