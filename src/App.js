@@ -78,29 +78,39 @@ class App extends Component {
       dataModal,
     } = this.state;
 
-    const tableData = illustration
-      .map(({ id, name, pack }, index) => ({
-        iterationId: index + 1,
-        key: `${id}_${index}`,
-        id,
-        name,
-        packName: pack.name,
-      }))
-      .filter(
-        ({ id, name, packName }) =>
-          !filterValue.toLowerCase() ||
-          id.toString().indexOf(filterValue) !== -1 ||
-          name.toLowerCase().indexOf(filterValue) !== -1 ||
-          packName.toLowerCase().indexOf(filterValue) !== -1
-      );
+    const sourceData = illustration.map(({ id, name, pack }, index) => ({
+      iterationId: index + 1,
+      key: `${id}_${index}`,
+      id,
+      name,
+      packName: pack.name,
+    }));
+
+    const matchesWords = filterValue
+      .split(",")
+      .filter((el) => !!el)
+      .map((el) => el.toLowerCase());
+
+    const tableData = sourceData.filter(({ id, name, packName }) => {
+      if (!matchesWords.length) {
+        return true;
+      }
+
+      for (let word of matchesWords) {
+        if (
+          id.toString().indexOf(word) !== -1 ||
+          name.toLowerCase().indexOf(word) !== -1 ||
+          packName.toLowerCase().indexOf(word) !== -1
+        ) {
+          return true;
+        }
+      }
+      return false;
+    });
 
     return (
       <div className='app'>
-        <Search
-          data={illustration}
-          value={this.state.filterValue}
-          onChange={this.onSearchChange}
-        />
+        <Search value={filterValue} onChange={this.onSearchChange} />
         <Table
           dataSource={tableData}
           columns={illustrationColumns}
@@ -114,7 +124,7 @@ class App extends Component {
           }}
           footer={() =>
             `Количество найденных совпадений:
-              ${tableData.length}/${this.state.illustration.length}`
+              ${tableData.length}/${illustration.length}`
           }
         />
         {hasMore && !filterValue.length && (
