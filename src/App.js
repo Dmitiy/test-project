@@ -112,6 +112,10 @@ class App extends Component {
               },
             };
           }}
+          footer={() =>
+            `Количество найденных совпадений:
+              ${tableData.length}/${this.state.illustration.length}`
+          }
         />
         {hasMore && !filterValue.length && (
           <Button

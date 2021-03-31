@@ -25,3 +25,7 @@ ol {
 .btn-addMore {
   margin-top: 24px;
 }
+
+.ant-table-footer {
+  text-align: right;
+}
